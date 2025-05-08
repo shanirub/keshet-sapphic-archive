@@ -10,7 +10,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { uniqueGenres } from '@/data/movies';
-import { ChevronDown, ChevronUp, Filter } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 
 interface FiltersProps {
   onFilterChange: (filterType: string, value: string | string[], checked?: boolean) => void;
