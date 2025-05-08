@@ -35,7 +35,7 @@ const ContentSlider: React.FC<ContentSliderProps> = ({ title, items, seeAllLink 
           )}
         </div>
         
-        <div className="grid-layout">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {displayItems.map((item) => (
             <ContentCard key={item.id} item={item} />
           ))}

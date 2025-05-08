@@ -14,7 +14,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className={`min-h-screen flex flex-col ${direction} text-foreground bg-background`}>
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow pt-16"> {/* Added padding-top to account for sticky header */}
         {children}
       </main>
       <Footer />

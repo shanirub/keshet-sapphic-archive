@@ -23,14 +23,14 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, size = 'medium' }) => {
       to={`/${item.type}s/${item.id}`} 
       className={`content-card ${sizeClasses[size]} hover-scale`}
     >
-      <div className="content-card-image rounded-none overflow-hidden border-2 border-brat-lime">
+      <div className="content-card-image rounded-none overflow-hidden border border-brat-lime">
         <img 
           src={item.image} 
           alt={item.title[language]} 
           className="w-full h-full object-cover aspect-square transition-transform hover:scale-105"
         />
         {item.isNew && (
-          <div className="absolute top-0 left-0 bg-brat-pink text-black text-xs px-2 py-0.5 uppercase font-bold tracking-wider">
+          <div className="absolute top-0 left-0 bg-brat-pink text-dark-gray text-xs px-2 py-0.5 uppercase font-bold tracking-wider">
             {language === 'en' ? 'New' : 'חדש'}
           </div>
         )}

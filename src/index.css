@@ -46,32 +46,32 @@
   }
 
   .dark {
-    --background: 0 0% 7%;
+    --background: 0 0% 12%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 7%;
+    --card: 0 0% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 7%;
+    --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 94 83% 65%;
-    --primary-foreground: 0 0% 7%;
+    --primary-foreground: 0 0% 12%;
 
     --secondary: 60 90% 69%;
-    --secondary-foreground: 0 0% 7%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 0 0% 15%;
+    --muted: 0 0% 20%;
     --muted-foreground: 0 0% 65%;
 
     --accent: 334 100% 65%;
-    --accent-foreground: 0 0% 7%;
+    --accent-foreground: 0 0% 12%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
     --ring: 94 83% 65%;
   }
 }
@@ -94,7 +94,7 @@
   }
 
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+    @apply transition-transform duration-300 hover:scale-102;
   }
 
   .content-card {
@@ -118,7 +118,7 @@
   }
   
   .brat-background {
-    @apply bg-brat-lime text-black;
+    @apply bg-brat-lime text-dark-gray;
   }
   
   .brat-gradient {
@@ -126,7 +126,7 @@
   }
   
   .grid-layout {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2;
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6;
   }
   
   /* Updated styles for accordion and filter components */
@@ -135,11 +135,11 @@
   }
   
   .filter-checkbox {
-    @apply border-brat-lime text-black focus:ring-brat-pink;
+    @apply border-brat-lime text-dark-gray focus:ring-brat-pink;
   }
   
   .filter-section {
-    @apply border-2 border-brat-pink mb-4 p-3;
+    @apply border border-brat-pink mb-4 p-3;
   }
   
   .filter-title {

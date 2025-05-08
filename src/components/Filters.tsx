@@ -32,9 +32,9 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
   ];
 
   return (
-    <div className={`border-2 border-brat-pink bg-black text-white p-4 rounded-none ${isOpen ? 'w-64' : 'w-auto'} transition-all duration-300`}>
+    <div className={`border border-brat-pink bg-dark-gray text-white p-4 rounded-none ${isOpen ? 'w-64' : 'w-auto'} transition-all duration-300`}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl brat-title bg-brat-lime text-black px-2 py-1">
+        <h2 className="text-xl brat-title bg-brat-lime text-dark-gray px-2 py-1">
           {t('filter.title')}
         </h2>
         <button 
@@ -48,7 +48,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
       {isOpen && (
         <div className="space-y-6">
           {/* Quick Filters */}
-          <div className="space-y-3 bg-black p-3 border border-brat-pink">
+          <div className="space-y-3 bg-dark-gray p-3 border border-brat-pink">
             <div className="font-courier uppercase font-bold tracking-wider text-brat-lime mb-2">
               {language === 'en' ? 'QUICK FILTERS' : 'מסננים מהירים'}
             </div>
@@ -56,7 +56,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
             <div className="flex items-center space-x-2">
               <Checkbox 
                 id="newest" 
-                className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-black"
+                className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-dark-gray"
                 checked={activeFilters['special']?.includes('newest')}
                 onCheckedChange={(checked) => 
                   onFilterChange('special', 'newest', checked === true)
@@ -70,7 +70,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
             <div className="flex items-center space-x-2">
               <Checkbox 
                 id="top-rated" 
-                className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-black"
+                className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-dark-gray"
                 checked={activeFilters['special']?.includes('top-rated')}
                 onCheckedChange={(checked) => 
                   onFilterChange('special', 'top-rated', checked === true)
@@ -84,7 +84,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
             <div className="flex items-center space-x-2">
               <Checkbox 
                 id="israeli" 
-                className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-black"
+                className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-dark-gray"
                 checked={activeFilters['special']?.includes('israeli')}
                 onCheckedChange={(checked) => 
                   onFilterChange('special', 'israeli', checked === true)
@@ -96,22 +96,22 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
             </div>
           </div>
           
-          <div className="h-px bg-brat-pink"></div>
+          <div className="h-px bg-brat-pink opacity-50"></div>
           
           {/* Genres Dropdown */}
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="genres" className="border-b-brat-pink">
+            <AccordionItem value="genres" className="border-b-brat-pink border-opacity-50">
               <AccordionTrigger className="py-2 text-sm hover:no-underline font-courier uppercase font-bold tracking-wider text-brat-yellow">
                 {t('filter.genre')}
               </AccordionTrigger>
-              <AccordionContent className="border-l border-brat-pink pl-2">
+              <AccordionContent className="border-l border-brat-pink border-opacity-50 pl-2">
                 <ScrollArea className="h-48 w-full">
                   <div className="space-y-2 pr-4">
                     {uniqueGenres.map((genre) => (
                       <div key={genre} className="flex items-center space-x-2">
                         <Checkbox 
                           id={`genre-${genre}`} 
-                          className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-black"
+                          className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-dark-gray"
                           checked={activeFilters['genre']?.includes(genre)}
                           onCheckedChange={(checked) => 
                             onFilterChange('genre', genre, checked === true)
@@ -130,18 +130,18 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
           
           {/* Decades Dropdown */}
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="decades" className="border-b-brat-pink">
+            <AccordionItem value="decades" className="border-b-brat-pink border-opacity-50">
               <AccordionTrigger className="py-2 text-sm hover:no-underline font-courier uppercase font-bold tracking-wider text-brat-yellow">
                 {language === 'en' ? 'DECADES' : 'עשורים'}
               </AccordionTrigger>
-              <AccordionContent className="border-l border-brat-pink pl-2">
+              <AccordionContent className="border-l border-brat-pink border-opacity-50 pl-2">
                 <ScrollArea className="h-48 w-full">
                   <div className="space-y-2 pr-4">
                     {decades.map((decade) => (
                       <div key={decade} className="flex items-center space-x-2">
                         <Checkbox 
                           id={`decade-${decade}`}
-                          className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-black"
+                          className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-dark-gray"
                           checked={activeFilters['decade']?.includes(decade)}
                           onCheckedChange={(checked) => 
                             onFilterChange('decade', decade, checked === true)
@@ -160,18 +160,18 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange, activeFilters }) => {
           
           {/* Moods Dropdown */}
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="moods" className="border-b-brat-pink">
+            <AccordionItem value="moods" className="border-b-brat-pink border-opacity-50">
               <AccordionTrigger className="py-2 text-sm hover:no-underline font-courier uppercase font-bold tracking-wider text-brat-yellow">
                 {language === 'en' ? 'MOODS' : 'מצבי רוח'}
               </AccordionTrigger>
-              <AccordionContent className="border-l border-brat-pink pl-2">
+              <AccordionContent className="border-l border-brat-pink border-opacity-50 pl-2">
                 <ScrollArea className="h-48 w-full">
                   <div className="space-y-2 pr-4">
                     {moods.map((mood) => (
                       <div key={mood} className="flex items-center space-x-2">
                         <Checkbox 
                           id={`mood-${mood}`}
-                          className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-black"
+                          className="border-brat-lime data-[state=checked]:bg-brat-lime data-[state=checked]:text-dark-gray"
                           checked={activeFilters['mood']?.includes(mood)}
                           onCheckedChange={(checked) => 
                             onFilterChange('mood', mood, checked === true)

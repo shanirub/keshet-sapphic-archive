@@ -72,13 +72,16 @@ export default {
 				'brat-lime': 'hsl(var(--brat-lime))',
 				'brat-pink': 'hsl(var(--brat-pink))',
 				'brat-yellow': 'hsl(var(--brat-yellow))',
-				'dark-gray': '#121212',
+				'dark-gray': '#222222',
 				'light-cream': '#f8f5f0',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			scale: {
+				'102': '1.02',
 			},
 			keyframes: {
 				'accordion-down': {

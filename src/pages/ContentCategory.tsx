@@ -128,9 +128,9 @@ const ContentCategory = () => {
               />
             </aside>
             
-            {/* Main content grid */}
+            {/* Main content grid - updated to 3 columns */}
             <div className="flex-1">
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {items.map((item) => (
                   <ContentCard key={item.id} item={item} />
                 ))}
