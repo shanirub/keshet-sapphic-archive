@@ -1,7 +1,7 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ContentItem } from '@/data/content';
+import { getMoviePoster } from '@/lib/tmdb';
 
 interface HeroSectionProps {
   featuredItem: ContentItem;
@@ -9,6 +9,23 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ featuredItem }) => {
   const { language, t } = useLanguage();
+  const [posterUrl, setPosterUrl] = useState<string>('/placeholder.svg');
+  
+  useEffect(() => {
+    const fetchPoster = async () => {
+      console.log('HeroSection: Fetching poster for', featuredItem.title.en, 'type:', featuredItem.type);
+      if (featuredItem.type === 'movie' || featuredItem.type === 'tv') {
+        const url = await getMoviePoster(featuredItem.title.en, (featuredItem as any).tmdb_id);
+        console.log('HeroSection: Got poster URL:', url);
+        setPosterUrl(url);
+      } else {
+        console.log('HeroSection: Using original image:', featuredItem.image);
+        setPosterUrl(featuredItem.image);
+      }
+    };
+    
+    fetchPoster();
+  }, [featuredItem.title.en, featuredItem.type, featuredItem.image, (featuredItem as any).tmdb_id]);
   
   return (
     <section className="relative bg-background text-foreground overflow-hidden border-b-2 border-black">
@@ -32,7 +49,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ featuredItem }) => {
           <div className="relative order-1 md:order-2">
             <div className="aspect-square w-full overflow-hidden animate-fade-in border-2 border-black">
               <img 
-                src={featuredItem.image} 
+                src={posterUrl} 
                 alt={featuredItem.title[language]} 
                 className="w-full h-full object-cover"
               />

@@ -1,24 +1,38 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from './ui/button';
 import { getRandomMovie } from '@/data/movies';
 import { Sparkles } from 'lucide-react';
+import { getMoviePoster } from '@/lib/tmdb';
 
 const SurpriseMe: React.FC = () => {
   const { language } = useLanguage();
   const [randomMovie, setRandomMovie] = useState(getRandomMovie());
+  const [posterUrl, setPosterUrl] = useState<string>('/placeholder.svg');
 
   useEffect(() => {
     // Initialize with a random movie
     setRandomMovie(getRandomMovie());
   }, []);
 
+  useEffect(() => {
+    const fetchPoster = async () => {
+      if (randomMovie) {
+        const url = await getMoviePoster(randomMovie.title);
+        setPosterUrl(url);
+      }
+    };
+    fetchPoster();
+  }, [randomMovie]);
+
   const handleSurpriseClick = () => {
     setRandomMovie(getRandomMovie());
   };
 
   if (!randomMovie) return null;
+
+  // Get genres from either the new or old structure
+  const genres = randomMovie.genres || randomMovie.genre || [];
 
   return (
     <section className="py-16 bg-brat-lime border-y-2 border-black">
@@ -33,7 +47,7 @@ const SurpriseMe: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="aspect-square overflow-hidden bg-secondary border-2 border-black">
               <img 
-                src={randomMovie.poster_path || '/placeholder.svg'} 
+                src={posterUrl} 
                 alt={randomMovie.title}
                 className="w-full h-full object-cover"
               />
@@ -46,7 +60,7 @@ const SurpriseMe: React.FC = () => {
               </div>
               
               <div className="flex flex-wrap gap-2 my-4">
-                {randomMovie.genre.map((genre, idx) => (
+                {genres.map((genre, idx) => (
                   <span 
                     key={idx} 
                     className="bg-black text-white text-xs px-3 py-1 font-courier uppercase tracking-wider"

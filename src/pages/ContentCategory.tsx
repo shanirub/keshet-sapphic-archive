@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import MainLayout from '@/components/Layout/MainLayout';
@@ -39,9 +38,28 @@ const ContentCategory = () => {
   
   useEffect(() => {
     // Get base items for this category
-    const baseItems = category && categoryMap[category] 
-      ? content.filter(item => item.type === categoryMap[category]) 
-      : content;
+    let baseItems;
+    if (category === 'movies') {
+      baseItems = processedMovies.map(movie => ({
+        id: movie.title, // Using title as ID since movies don't have IDs
+        title: {
+          en: movie.title,
+          he: movie.title // Using English title for Hebrew as well
+        },
+        type: 'movie',
+        image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        year: movie.year || 0,
+        genres: movie.genre,
+        isIsraeli: false, // Default value
+        isNew: false, // Default value
+        isFeatured: false, // Default value
+        rating: 0 // Default value
+      }));
+    } else {
+      baseItems = category && categoryMap[category] 
+        ? content.filter(item => item.type === categoryMap[category]) 
+        : content;
+    }
     
     applyFilters(baseItems);
   }, [category, activeFilters]);

@@ -1,8 +1,8 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContentItem } from '@/data/content';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
+import { getMoviePoster } from '@/lib/tmdb';
 
 interface ContentCardProps {
   item: ContentItem;
@@ -11,6 +11,23 @@ interface ContentCardProps {
 
 const ContentCard: React.FC<ContentCardProps> = ({ item, size = 'medium' }) => {
   const { language } = useLanguage();
+  const [posterUrl, setPosterUrl] = useState<string>('/placeholder.svg');
+  
+  useEffect(() => {
+    const fetchPoster = async () => {
+      console.log('ContentCard: Fetching poster for', item.title.en, 'type:', item.type);
+      if (item.type === 'movie' || item.type === 'tv') {
+        const url = await getMoviePoster(item.title.en, (item as any).tmdb_id);
+        console.log('ContentCard: Got poster URL:', url);
+        setPosterUrl(url);
+      } else {
+        console.log('ContentCard: Using original image:', item.image);
+        setPosterUrl(item.image);
+      }
+    };
+    
+    fetchPoster();
+  }, [item.title.en, item.type, item.image, (item as any).tmdb_id]);
   
   const sizeClasses = {
     small: 'w-full',
@@ -25,7 +42,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, size = 'medium' }) => {
     >
       <div className="content-card-image rounded-none overflow-hidden border border-brat-lime">
         <img 
-          src={item.image} 
+          src={posterUrl} 
           alt={item.title[language]} 
           className="w-full h-full object-cover aspect-square transition-transform hover:scale-105"
         />

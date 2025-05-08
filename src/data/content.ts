@@ -1,4 +1,3 @@
-
 export interface ContentItem {
   id: string;
   title: {
@@ -29,7 +28,7 @@ export const content: ContentItem[] = [
     isIsraeli: false,
     isNew: false,
     isFeatured: true,
-    rating: 4.9,
+    rating: 4.8,
   },
   {
     id: '2',
@@ -59,7 +58,7 @@ export const content: ContentItem[] = [
     isIsraeli: false,
     isNew: false,
     isFeatured: false,
-    rating: 4.8,
+    rating: 4.7,
   },
   {
     id: '4',
@@ -74,7 +73,7 @@ export const content: ContentItem[] = [
     isIsraeli: false,
     isNew: false,
     isFeatured: true,
-    rating: 4.7,
+    rating: 4.6,
   },
   {
     id: '5',
