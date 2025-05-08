@@ -12,10 +12,10 @@ const Index = () => {
   const { t } = useLanguage();
   
   const featuredItem = content.find(item => item.isFeatured) || content[0];
-  const newestItems = content.filter(item => item.isNew).slice(0, 5);
-  const popularItems = [...content].sort((a, b) => b.rating - a.rating).slice(0, 5);
-  const movieItems = content.filter(item => item.type === 'movie').slice(0, 5);
-  const tvItems = content.filter(item => item.type === 'tv').slice(0, 5);
+  const newestItems = content.filter(item => item.isNew).slice(0, 6);
+  const popularItems = [...content].sort((a, b) => b.rating - a.rating).slice(0, 6);
+  const movieItems = content.filter(item => item.type === 'movie').slice(0, 6);
+  const tvItems = content.filter(item => item.type === 'tv').slice(0, 6);
   
   return (
     <MainLayout>

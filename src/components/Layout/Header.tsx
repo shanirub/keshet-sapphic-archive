@@ -19,9 +19,9 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className={`py-4 border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-10 ${direction}`}>
+    <header className={`py-3 border-b-2 border-black sticky top-0 bg-brat-lime z-50 ${direction}`}>
       <div className="container px-4 mx-auto flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight flex items-center gap-1">
+        <Link to="/" className="text-xl brat-title flex items-center gap-1">
           {language === 'en' ? 'Yesh Lesbiyot' : 'יש לסביות'}
         </Link>
         
@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             <Link 
               key={index} 
               to={item.href}
-              className="text-sm hover:text-magenta transition-colors"
+              className="text-sm font-courier uppercase font-bold tracking-wider hover:bg-brat-pink hover:text-white px-2 py-1 transition-colors"
             >
               {item.label}
             </Link>
@@ -38,15 +38,15 @@ const Header: React.FC = () => {
         </nav>
         
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-black hover:bg-brat-pink hover:text-white">
             <Search className="h-[1.2rem] w-[1.2rem]" />
           </Button>
-          <Button variant="ghost" size="icon" className="md:hidden">
+          <Button variant="ghost" size="icon" className="md:hidden text-black hover:bg-brat-pink hover:text-white">
             <Filter className="h-[1.2rem] w-[1.2rem]" />
           </Button>
           <Button 
             variant="outline" 
-            className="text-xs" 
+            className="text-xs font-courier uppercase tracking-wider border-2 border-black hover:bg-brat-pink hover:text-white" 
             onClick={toggleLanguage}
           >
             {t('ui.languageToggle')}

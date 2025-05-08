@@ -21,32 +21,27 @@ const SurpriseMe: React.FC = () => {
   if (!randomMovie) return null;
 
   return (
-    <section className="py-16 bg-dark-gray">
+    <section className="py-16 bg-brat-lime border-y-2 border-black">
       <div className="container px-4 mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+          <h2 className="text-3xl md:text-4xl brat-title mb-2 bg-black text-white inline-block px-4 py-2">
             {language === 'en' ? 'Surprise Me' : 'הפתע אותי'}
           </h2>
-          <p className="text-muted-foreground">
-            {language === 'en' 
-              ? 'Discover something unexpected' 
-              : 'גלה משהו לא צפוי'}
-          </p>
         </div>
         
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="aspect-[2/3] overflow-hidden bg-secondary rounded-lg">
+            <div className="aspect-square overflow-hidden bg-secondary border-2 border-black">
               <img 
                 src={randomMovie.poster_path || '/placeholder.svg'} 
                 alt={randomMovie.title}
-                className="w-full h-full object-cover transition-transform hover:scale-105"
+                className="w-full h-full object-cover"
               />
             </div>
             
             <div className="text-left space-y-4">
-              <h3 className="text-2xl font-bold">{randomMovie.title}</h3>
-              <div className="text-sm text-magenta font-medium">
+              <h3 className="text-2xl brat-title">{randomMovie.title}</h3>
+              <div className="text-sm font-courier uppercase font-bold">
                 {randomMovie.year}
               </div>
               
@@ -54,20 +49,20 @@ const SurpriseMe: React.FC = () => {
                 {randomMovie.genre.map((genre, idx) => (
                   <span 
                     key={idx} 
-                    className="bg-magenta/20 text-magenta text-xs px-3 py-1 rounded"
+                    className="bg-black text-white text-xs px-3 py-1 font-courier uppercase tracking-wider"
                   >
                     {genre}
                   </span>
                 ))}
               </div>
               
-              <p className="text-gray-300 line-clamp-4">
+              <p className="text-black line-clamp-4 font-grotesk">
                 {randomMovie.overview}
               </p>
               
               <Button 
                 onClick={handleSurpriseClick}
-                className="bg-magenta hover:bg-magenta/80 mt-4"
+                className="bg-black text-white hover:bg-brat-pink mt-4 border-2 border-black font-courier uppercase tracking-wider"
               >
                 <Sparkles className="h-4 w-4 mr-2" />
                 {language === 'en' ? 'Show me another' : 'הראה לי אחר'}

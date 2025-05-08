@@ -22,6 +22,8 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				hebrew: ['Assistant', 'sans-serif'],
+				courier: ['Courier Prime', 'monospace'],
+				grotesk: ['Space Grotesk', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -67,7 +69,9 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				magenta: '#D946EF',
+				'brat-lime': 'hsl(var(--brat-lime))',
+				'brat-pink': 'hsl(var(--brat-pink))',
+				'brat-yellow': 'hsl(var(--brat-yellow))',
 				'dark-gray': '#121212',
 				'light-cream': '#f8f5f0',
 			},
