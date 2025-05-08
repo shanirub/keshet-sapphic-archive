@@ -13,9 +13,9 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, size = 'medium' }) => {
   const { language } = useLanguage();
   
   const sizeClasses = {
-    small: 'w-full md:w-40',
-    medium: 'w-full md:w-52',
-    large: 'w-full md:w-72',
+    small: 'w-full',
+    medium: 'w-full',
+    large: 'w-full',
   };
   
   return (
@@ -23,11 +23,11 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, size = 'medium' }) => {
       to={`/${item.type}s/${item.id}`} 
       className={`content-card ${sizeClasses[size]} hover-scale`}
     >
-      <div className="content-card-image">
+      <div className="content-card-image rounded-md overflow-hidden">
         <img 
           src={item.image} 
           alt={item.title[language]} 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform hover:scale-105"
         />
         {item.isNew && (
           <div className="absolute top-2 left-2 bg-magenta text-white text-xs px-2 py-0.5 rounded">
@@ -35,11 +35,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, size = 'medium' }) => {
           </div>
         )}
       </div>
-      <div className="content-card-title">
+      <div className="content-card-title mt-2 font-bold">
         {item.title[language]}
-      </div>
-      <div className="content-card-subtitle">
-        {item.year}
       </div>
     </Link>
   );

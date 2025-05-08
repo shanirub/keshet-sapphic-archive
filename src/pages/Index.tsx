@@ -5,6 +5,8 @@ import HeroSection from '@/components/HeroSection';
 import ContentSlider from '@/components/ContentSlider';
 import { content } from '@/data/content';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ContentChatbot from '@/components/ContentChatbot';
+import SurpriseMe from '@/components/SurpriseMe';
 
 const Index = () => {
   const { t } = useLanguage();
@@ -25,11 +27,15 @@ const Index = () => {
         seeAllLink="/newest"
       />
       
+      <SurpriseMe />
+      
       <ContentSlider 
         title={t('ui.popularNow')} 
         items={popularItems} 
         seeAllLink="/popular"
       />
+      
+      <ContentChatbot />
       
       <ContentSlider 
         title={t('nav.movies')} 

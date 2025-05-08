@@ -12,7 +12,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { direction } = useLanguage();
   
   return (
-    <div className={`min-h-screen flex flex-col ${direction}`}>
+    <div className={`min-h-screen flex flex-col ${direction} text-foreground bg-background`}>
       <Header />
       <main className="flex-grow">
         {children}
