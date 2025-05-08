@@ -18,7 +18,7 @@ const ContentSlider: React.FC<ContentSliderProps> = ({ title, items, seeAllLink 
   const displayItems = items.slice(0, 6);
   
   return (
-    <section className="py-12">
+    <section className="py-8">
       <div className="container px-4 mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl brat-title bg-brat-lime px-2 py-1 inline-block">
@@ -28,7 +28,7 @@ const ContentSlider: React.FC<ContentSliderProps> = ({ title, items, seeAllLink 
           {seeAllLink && (
             <Link 
               to={seeAllLink}
-              className="text-sm font-courier uppercase font-bold tracking-wider hover:underline"
+              className="text-sm font-courier uppercase font-bold tracking-wider hover:underline hover:text-brat-pink"
             >
               {t('ui.seeAll')}
             </Link>
